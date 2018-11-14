@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Library>
+  <Catalog unloadingTime="" libraryName="">
+    <Book>
+      <Name></Name>
+      <Authors></Authors>
+      <PublicationPlace></PublicationPlace>
+      <PublisherName></PublisherName>
+      <PublicationYear></PublicationYear>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+      <ISBN></ISBN>
+    </Book>
+    <Newspaper>
+      <Name></Name>
+      <PublicationPlace></PublicationPlace>
+      <PublisherName></PublisherName>
+      <PublicationYear></PublicationYear>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+      <Number></Number>
+      <Date></Date>
+      <ISSN></ISSN>
+    </Newspaper>
+    <Patent>
+      <Name></Name>
+      <Creator></Creator>
+      <Country></Country>
+      <RegistrationNumber></RegistrationNumber>
+      <ApplicationDate></ApplicationDate>
+      <PublicationDate></PublicationDate>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+    </Patent>
+  </Catalog>
+  <Catalog unloadingTime="" libraryName="">
+    <Book>
+      <Name></Name>
+      <Authors></Authors>
+      <PublicationPlace></PublicationPlace>
+      <PublisherName></PublisherName>
+      <PublicationYear></PublicationYear>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+      <ISBN></ISBN>
+    </Book>
+    <Newspaper>
+      <Name></Name>
+      <PublicationPlace></PublicationPlace>
+      <PublisherName></PublisherName>
+      <PublicationYear></PublicationYear>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+      <Number></Number>
+      <Date></Date>
+      <ISSN></ISSN>
+    </Newspaper>
+    <Patent>
+      <Name></Name>
+      <Creator></Creator>
+      <Country></Country>
+      <RegistrationNumber></RegistrationNumber>
+      <ApplicationDate></ApplicationDate>
+      <PublicationDate></PublicationDate>
+      <PageCount></PageCount>
+      <Annotation></Annotation>
+    </Patent>
+  </Catalog>
+</Library>  
+
+

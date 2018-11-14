@@ -42,10 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Author.cs" />
+    <Compile Include="Entities\Book.cs" />
+    <Compile Include="Entities\Interfaces\ICatalogEntity.cs" />
+    <Compile Include="Entities\Newspaper.cs" />
+    <Compile Include="Entities\Patent.cs" />
+    <Compile Include="Parsers\BookEntityParser.cs" />
+    <Compile Include="Parsers\NewspaperEntityParser.cs" />
+    <Compile Include="Parsers\PatentEntityParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Entities\" />
+    <Content Include="XMLFile1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
