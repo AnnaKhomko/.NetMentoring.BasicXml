@@ -17,6 +17,7 @@ namespace XmlBasic.Parsers
 			var bookEntity = new Book
 			{
 				Name = element.Element("Name").Value
+
 			};
 
 			return bookEntity;
