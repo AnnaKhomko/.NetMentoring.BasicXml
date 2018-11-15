@@ -7,7 +7,7 @@ using XmlBasic.Entities.Interfaces;
 
 namespace XmlBasic.Entities
 {
-	public class Book : ICatalogEntity
+	public class Book : IEntity
 	{
 		public string Name { get; set; }
 		public List<Author> Authors{ get; set;}

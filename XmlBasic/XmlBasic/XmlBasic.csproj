@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Exceptions\UnknownElementException.cs" />
+    <Compile Include="LibraryLoader.cs" />
     <Compile Include="Entities\Author.cs" />
     <Compile Include="Entities\Book.cs" />
-    <Compile Include="Entities\Interfaces\ICatalogEntity.cs" />
+    <Compile Include="Entities\Catalog.cs" />
+    <Compile Include="Entities\Creator.cs" />
+    <Compile Include="Entities\Interfaces\IEntity.cs" />
+    <Compile Include="Entities\Library.cs" />
     <Compile Include="Entities\Newspaper.cs" />
     <Compile Include="Entities\Patent.cs" />
     <Compile Include="Parsers\BookEntityParser.cs" />
+    <Compile Include="Parsers\CatalogParser.cs" />
     <Compile Include="Parsers\NewspaperEntityParser.cs" />
     <Compile Include="Parsers\PatentEntityParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,7 +3,9 @@
   <Catalog unloadingTime="" libraryName="">
     <Book>
       <Name></Name>
-      <Authors></Authors>
+      <Authors>
+        <Author name="" surname =""/>
+      </Authors>
       <PublicationPlace></PublicationPlace>
       <PublisherName></PublisherName>
       <PublicationYear></PublicationYear>
@@ -24,7 +26,9 @@
     </Newspaper>
     <Patent>
       <Name></Name>
-      <Creator></Creator>
+      <Creators>
+        <Creator name="" surname=""/>
+      </Creators>
       <Country></Country>
       <RegistrationNumber></RegistrationNumber>
       <ApplicationDate></ApplicationDate>
@@ -36,7 +40,9 @@
   <Catalog unloadingTime="" libraryName="">
     <Book>
       <Name></Name>
-      <Authors></Authors>
+      <Authors>
+        <Author name="" surname =""/>
+      </Authors>
       <PublicationPlace></PublicationPlace>
       <PublisherName></PublisherName>
       <PublicationYear></PublicationYear>
@@ -57,7 +63,9 @@
     </Newspaper>
     <Patent>
       <Name></Name>
-      <Creator></Creator>
+      <Creators>
+        <Creator name="" surname=""/>
+      </Creators>
       <Country></Country>
       <RegistrationNumber></RegistrationNumber>
       <ApplicationDate></ApplicationDate>

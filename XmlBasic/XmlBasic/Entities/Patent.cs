@@ -7,10 +7,10 @@ using XmlBasic.Entities.Interfaces;
 
 namespace XmlBasic.Entities
 {
-	public class Patent : ICatalogEntity
+	public class Patent : IEntity
 	{
 		public string Name { get; set; }
-		public List<Author> Creators { get; set; }
+		public List<Creator> Creators { get; set; }
 		public string Country { get; set; }
 		public int RegistrationNumber { get; set; }
 		public DateTime ApplicationDate { get; set; }

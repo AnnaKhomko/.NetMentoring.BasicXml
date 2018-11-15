@@ -7,7 +7,7 @@ using XmlBasic.Entities.Interfaces;
 
 namespace XmlBasic.Entities
 {
-	public class Newspaper : ICatalogEntity
+	public class Newspaper : IEntity
 	{
 		public string Name { get; set; }
 		public string PublicationPlace { get; set; }

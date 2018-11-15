@@ -4,35 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
+using XmlBasic.Entities;
+using XmlBasic.Entities.Interfaces;
 
 namespace XmlBasic.Parsers
 {
 	public class BookEntityParser
 	{
-		public void ReadFrom(string fileName)
+		public IEntity ParseElement(XElement element)
 		{
-			XmlReaderSettings settings = new XmlReaderSettings();
-			settings.IgnoreWhitespace = true;
-			// Create an XML reader for this file.
-			using (XmlReader reader = XmlReader.Create(fileName, settings))
+			var bookEntity = new Book
 			{
-				while (reader.Read())
-				{
-					if (reader.IsStartElement())
-					{
-						if (reader.IsEmptyElement)
-							Console.WriteLine("<{0}/>", reader.Name);
-						else
-						{
-							Console.Write("<{0}> ", reader.Name);
-							reader.Read(); // Read the start tag.
-							if (reader.IsStartElement())  // Handle nested elements.
-								Console.Write("\r\n<{0}>", reader.Name);
-							Console.WriteLine(reader.ReadString());  //Read the text content of the element.
-						}
-					}
-				}
-			}
+				Name = element.Element("Name").Value
+			};
+
+			return bookEntity;
 		}
 	}
 }

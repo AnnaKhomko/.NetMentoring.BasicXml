@@ -7,7 +7,7 @@ using XmlBasic.Entities.Interfaces;
 
 namespace XmlBasic.Entities
 {
-	public class CatalogEntity : IEntity
+	public class Catalog : IEntity
 	{
 		public DateTime UploadingTime { get; set; }
 		public string LibraryName { get; set; }
