@@ -13,9 +13,22 @@ namespace XmlBasic.Parsers
 	{
 		public IEntity ParseElement(XElement element)
 		{
+			if (element == null)
+			{
+				throw new ArgumentNullException($"{nameof(element)} is null");
+			}
+
 			var newspaperEntity = new Newspaper
 			{
-				Name = element.Element("Name").Value
+				Name = element.Element("Name").Value,
+				PublicationPlace = element.Element("PublicationPlace").Value,
+				PublisherName = element.Element("PublisherName").Value,
+				PublicationYear = int.Parse(element.Element("PublicationYear").Value),
+				PageCount = int.Parse(element.Element("PageCount").Value),
+				Annotation = element.Element("Annotation").Value,
+				Number = int.Parse(element.Element("Number").Value),
+				Date = DateTime.Parse(element.Element("Date").Value),
+				ISSN = element.Element("ISSN").Value
 			};
 
 			return newspaperEntity;

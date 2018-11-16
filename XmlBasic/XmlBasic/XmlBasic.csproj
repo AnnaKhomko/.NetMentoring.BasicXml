@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\EntityWriterNotFoundedException.cs" />
     <Compile Include="Exceptions\UnknownElementException.cs" />
     <Compile Include="LibraryLoader.cs" />
     <Compile Include="Entities\Author.cs" />
@@ -56,6 +57,10 @@
     <Compile Include="Parsers\NewspaperEntityParser.cs" />
     <Compile Include="Parsers\PatentEntityParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Writers\BookEntityWriter.cs" />
+    <Compile Include="Writers\CatalogEntityWriter.cs" />
+    <Compile Include="Writers\NewspaperEntityWriter.cs" />
+    <Compile Include="Writers\PatentEntityWriter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

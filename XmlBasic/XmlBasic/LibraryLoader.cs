@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
 using XmlBasic.Exceptions;
 using XmlBasic.Parsers;
+using XmlBasic.Writers;
 
 namespace XmlBasic
 {
@@ -17,9 +19,11 @@ namespace XmlBasic
 		public LibraryLoader()
 		{
 			parser = new CatalogParser();
+			writer = new CatalogEntityWriter();
 		}
 		private static string elementName = "Library";
 		private CatalogParser parser;
+		private CatalogEntityWriter writer;
 		public IEnumerable<IEntity> ReadFrom(TextReader input)
 		{
 			using (XmlReader xmlReader = XmlReader.Create(input, new XmlReaderSettings
@@ -49,5 +53,26 @@ namespace XmlBasic
 				} while (xmlReader.Read());
 			}
 		}
-    }
+
+		public void WriteTo(TextWriter output, IEnumerable<IEntity> catalogs)
+		{
+			using (XmlWriter xmlWriter = XmlWriter.Create(output, new XmlWriterSettings()))
+			{
+				xmlWriter.WriteStartDocument();
+				xmlWriter.WriteStartElement(elementName);
+				foreach (var catalogEntity in catalogs)
+				{
+					if (catalogEntity.GetType().Equals(typeof(Catalog)))
+					{
+						writer.WriteEntity(xmlWriter, catalogEntity);
+					}
+					else
+					{
+						throw new EntityWriterNotFoundedException($"Cannot find entity writer for type {catalogEntity.GetType().FullName}");
+					}
+				}
+				xmlWriter.WriteEndElement();
+			}
+		}
+	}
 }
