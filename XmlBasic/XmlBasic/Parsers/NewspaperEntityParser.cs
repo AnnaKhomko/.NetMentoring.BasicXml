@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Parsers.Abstract;
 
 namespace XmlBasic.Parsers
 {
-	public class NewspaperEntityParser
+	public class NewspaperEntityParser : BaseParser
 	{
 		public IEntity ParseElement(XElement element)
 		{
@@ -20,15 +21,15 @@ namespace XmlBasic.Parsers
 
 			var newspaperEntity = new Newspaper
 			{
-				Name = element.Element("Name").Value,
-				PublicationPlace = element.Element("PublicationPlace").Value,
-				PublisherName = element.Element("PublisherName").Value,
-				PublicationYear = int.Parse(element.Element("PublicationYear").Value),
-				PageCount = int.Parse(element.Element("PageCount").Value),
-				Annotation = element.Element("Annotation").Value,
-				Number = int.Parse(element.Element("Number").Value),
-				Date = DateTime.Parse(element.Element("Date").Value),
-				ISSN = element.Element("ISSN").Value
+				Name = GetElementValue(element, "Name"),
+				PublicationPlace = GetElementValue(element, "PublicationPlace"),
+				PublisherName = GetElementValue(element, "PublisherName"),
+				PublicationYear = int.Parse(GetElementValue(element, "PublicationYear") ?? default(int).ToString()),
+				PageCount = int.Parse(GetElementValue(element, "PageCount") ?? default(int).ToString()),
+				Annotation = GetElementValue(element, "Annotation"),
+				Number = int.Parse(GetElementValue(element, "Number") ?? default(int).ToString()),
+				Date = GetDate(GetElementValue(element, "Date")),
+				ISSN = GetElementValue(element, "ISSN")
 			};
 
 			return newspaperEntity;

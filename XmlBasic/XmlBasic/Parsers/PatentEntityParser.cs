@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Parsers.Abstract;
 
 namespace XmlBasic.Parsers
 {
-	public class PatentEntityParser
+	public class PatentEntityParser : BaseParser
 	{
 		public IEntity ParseElement(XElement element)
 		{
@@ -20,18 +21,18 @@ namespace XmlBasic.Parsers
 
 			var patentEntity = new Patent
 			{
-				Name = element.Element("Name").Value,
-				Creators = element.Element("Creators").Elements("Creator").Select(e => new Creator
+				Name = GetElementValue(element, "Name"),
+				Creators = GetElement(element, "Creators").Elements("Creator").Select(e => new Creator
 				{
-					Name = e.Attribute("name").Value,
-					Surname = e.Attribute("surname").Value
+					Name = GetAttributeValue(e, "name"),
+					Surname = GetAttributeValue(e, "surname")
 				}).ToList(),
-				Country = element.Element("Country").Value,
-				RegistrationNumber = int.Parse(element.Element("RegistrationNumber").Value),
-				ApplicationDate = DateTime.Parse(element.Element("ApplicationDate").Value),
-				PublicationDate = DateTime.Parse(element.Element("PublicationDate").Value),
-				PageCount = int.Parse(element.Element("PageCount").Value),
-				Annotation = element.Element("Annotation").Value
+				Country = GetElementValue(element, "Country"),
+				RegistrationNumber = int.Parse(GetElementValue(element, "RegistrationNumber") ?? default(int).ToString()),
+				ApplicationDate = GetDate(GetElementValue(element, "ApplicationDate")),
+				PublicationDate = GetDate(GetElementValue(element, "PublicationDate") ?? default(int).ToString()),
+				PageCount = int.Parse(GetElementValue(element, "PageCount") ?? default(int).ToString()),
+				Annotation = GetElementValue(element, "Annotation")
 			};
 
 			return patentEntity;

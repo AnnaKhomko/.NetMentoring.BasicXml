@@ -7,10 +7,11 @@ using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Parsers.Abstract;
 
 namespace XmlBasic.Parsers
 {
-	public class BookEntityParser
+	public class BookEntityParser : BaseParser
 	{
 		public IEntity ParseElement(XElement element)
 		{
@@ -21,18 +22,18 @@ namespace XmlBasic.Parsers
 
 			var bookEntity = new Book
 			{
-				Name = element.Element("Name").Value,
-				Authors = element.Element("Authors").Elements("Author").Select(e => new Author
+				Name = GetElementValue(element, "Name"),
+				Authors = GetElement(element, "Authors").Elements("Author").Select(e => new Author
 				{
-					Name = e.Attribute("name").Value,
-					Surname = e.Attribute("surname").Value
+					Name = GetAttributeValue(e, "name"),
+					Surname = GetAttributeValue(e, "surname")
 				}).ToList(),
-				PublicationPlace = element.Element("PublicationPlace").Value,
-				PublisherName = element.Element("PublisherName").Value,
-				PublicationYear = int.Parse(element.Element("PublicationYear").Value),
-				PageCount = int.Parse(element.Element("PageCount").Value),
-				Annotation = element.Element("Annotation").Value,
-				ISBN = element.Element("ISBN").Value
+				PublicationPlace = GetElementValue(element, "PublicationPlace"),
+				PublisherName = GetElementValue(element, "PublisherName"),
+				PublicationYear = int.Parse(GetElementValue(element, "PublicationYear") ?? default(int).ToString()),
+				PageCount = int.Parse(GetElementValue(element, "PageCount") ?? default(int).ToString()),
+				Annotation = GetElementValue(element, "Annotation"),
+				ISBN = GetElementValue(element, "ISBN")
 			};
 
 			return bookEntity;

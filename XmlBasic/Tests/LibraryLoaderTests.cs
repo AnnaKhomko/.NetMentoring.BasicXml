@@ -12,7 +12,7 @@ using XmlBasic.Parsers;
 namespace Tests
 {
 	[TestClass]
-	public class UnitTest1
+	public class LibraryLoaderTests
 	{
 		[TestMethod]
 		public void TestMethod1()

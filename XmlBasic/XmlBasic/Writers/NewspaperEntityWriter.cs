@@ -7,12 +7,15 @@ using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Writers.Abstract;
 
 namespace XmlBasic.Writers
 {
-	public class NewspaperEntityWriter
+	public class NewspaperEntityWriter : BaseWriter
 	{
-		public void WriteEntity(XmlWriter xmlWriter, IEntity entity)
+		private static string elementName = "Newspaper";
+
+		public void WriteEntity(XElement element, IEntity entity)
 		{
 			Newspaper newspaper = entity as Newspaper;
 			if (newspaper == null)
@@ -20,17 +23,17 @@ namespace XmlBasic.Writers
 				throw new ArgumentException($"provided {nameof(entity)} is null or not of type {nameof(Newspaper)}");
 			}
 
-			XElement element = new XElement("Newspaper");
-			element.Add("Name", newspaper.Name);
-			element.Add("PublicationPlace", newspaper.PublicationPlace);
-			element.Add("PublisherName", newspaper.PublisherName);
-			element.Add("PublicationYear", newspaper.PublicationYear);
-			element.Add("PageCount", newspaper.PageCount);
-			element.Add("Annotation", newspaper.Annotation);
-			element.Add("Number", newspaper.Number);
-			element.Add("Date", newspaper.Date);
-			element.Add("ISSN", newspaper.ISSN);
-			element.WriteTo(xmlWriter);
+			XElement elem = new XElement(elementName);
+			AddElement(elem, "Name", newspaper.Name);
+			AddElement(elem, "PublicationPlace", newspaper.PublicationPlace);
+			AddElement(elem, "PublisherName", newspaper.PublisherName);
+			AddElement(elem, "PublicationYear", newspaper.PublicationYear);
+			AddElement(elem, "PageCount", newspaper.PageCount);
+			AddElement(elem, "Annotation", newspaper.Annotation);
+			AddElement(elem, "Number", newspaper.Number);
+			AddElement(elem, "Date", newspaper.Date);
+			AddElement(elem, "ISSN", newspaper.ISSN);
+			element.Add(elem);
 		}
 	}
 }

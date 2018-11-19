@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\EntityWriterNotFoundedException.cs" />
+    <Compile Include="Exceptions\MandatoryAttributeMissedException.cs" />
+    <Compile Include="Exceptions\MandatoryElementMissedException.cs" />
     <Compile Include="Exceptions\UnknownElementException.cs" />
     <Compile Include="LibraryLoader.cs" />
     <Compile Include="Entities\Author.cs" />
@@ -52,11 +54,13 @@
     <Compile Include="Entities\Library.cs" />
     <Compile Include="Entities\Newspaper.cs" />
     <Compile Include="Entities\Patent.cs" />
+    <Compile Include="Parsers\Abstract\BaseParser.cs" />
     <Compile Include="Parsers\BookEntityParser.cs" />
     <Compile Include="Parsers\CatalogParser.cs" />
     <Compile Include="Parsers\NewspaperEntityParser.cs" />
     <Compile Include="Parsers\PatentEntityParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Writers\Abstract\BaseWriter.cs" />
     <Compile Include="Writers\BookEntityWriter.cs" />
     <Compile Include="Writers\CatalogEntityWriter.cs" />
     <Compile Include="Writers\NewspaperEntityWriter.cs" />

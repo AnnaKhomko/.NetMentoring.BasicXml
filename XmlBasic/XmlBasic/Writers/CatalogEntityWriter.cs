@@ -7,14 +7,17 @@ using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Writers.Abstract;
 
 namespace XmlBasic.Writers
 {
-	public class CatalogEntityWriter
+	public class CatalogEntityWriter : BaseWriter
 	{
 		private BookEntityWriter bookWriter;
 		private NewspaperEntityWriter newspaperWriter;
 		private PatentEntityWriter patentWriter;
+
+		private static string elementName = "Catalog";
 
 		public CatalogEntityWriter()
 		{
@@ -31,10 +34,12 @@ namespace XmlBasic.Writers
 				throw new ArgumentException($"provided {nameof(entity)} is null or not of type {nameof(Catalog)}");
 			}
 
-			XElement element = new XElement("Catalog");
-			bookWriter.WriteEntity(xmlWriter, catalog.Book);
-			newspaperWriter.WriteEntity(xmlWriter, catalog.Newspaper);
-			patentWriter.WriteEntity(xmlWriter, catalog.Patent);
+			XElement element = new XElement(elementName);
+			AddAttribute(element, "unloadingTime", GetInvariantShortDateString(catalog.UploadingTime));
+			AddAttribute(element, "libraryName", catalog.LibraryName);
+			bookWriter.WriteEntity(element, catalog.Book);
+			newspaperWriter.WriteEntity(element, catalog.Newspaper);
+			patentWriter.WriteEntity(element, catalog.Patent);
 			element.WriteTo(xmlWriter);
 		}
 	}

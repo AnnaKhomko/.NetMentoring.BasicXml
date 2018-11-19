@@ -7,12 +7,15 @@ using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
+using XmlBasic.Writers.Abstract;
 
 namespace XmlBasic.Writers
 {
-	public class PatentEntityWriter
+	public class PatentEntityWriter : BaseWriter
 	{
-		public void WriteEntity(XmlWriter xmlWriter, IEntity entity)
+		private static string elementName = "Patent";
+
+		public void WriteEntity(XElement element, IEntity entity)
 		{
 			Patent patent = entity as Patent;
 			if (patent == null)
@@ -20,19 +23,19 @@ namespace XmlBasic.Writers
 				throw new ArgumentException($"provided {nameof(entity)} is null or not of type {nameof(Patent)}");
 			}
 
-			XElement element = new XElement("Patent");
-			element.Add("Name", patent.Name);
-			element.Add("Creators", patent.Creators
+			XElement elem = new XElement(elementName);
+			AddElement(elem, "Name", patent.Name);
+			AddElement(elem, "Creators", patent.Creators
 				.Select(el => new XElement("Creator", 
 							  new XAttribute("name", el.Name), 
 							  new XAttribute("surname", el.Surname))));
-			element.Add("Country", patent.Country);
-			element.Add("RegistrationNumber", patent.RegistrationNumber);
-			element.Add("ApplicationDate", patent.ApplicationDate);
-			element.Add("PublicationDate", patent.PublicationDate);
-			element.Add("PageCount", patent.PageCount);
-			element.Add("Annotation", patent.Annotation);
-			element.WriteTo(xmlWriter);
+			AddElement(elem, "Country", patent.Country);
+			AddElement(elem, "RegistrationNumber", patent.RegistrationNumber);
+			AddElement(elem, "ApplicationDate", patent.ApplicationDate);
+			AddElement(elem, "PublicationDate", patent.PublicationDate);
+			AddElement(elem, "PageCount", patent.PageCount);
+			AddElement(elem, "Annotation", patent.Annotation);
+			element.Add(elem);
 		}
 	}
 }

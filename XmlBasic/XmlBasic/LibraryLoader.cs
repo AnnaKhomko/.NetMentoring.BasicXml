@@ -14,16 +14,27 @@ using XmlBasic.Writers;
 
 namespace XmlBasic
 {
-    public class LibraryLoader
+	/// <summary>
+	/// 
+	/// </summary>
+	public class LibraryLoader
     {
+		private static string elementName = "Library";
+		private CatalogParser parser;
+		private CatalogEntityWriter writer;
+
 		public LibraryLoader()
 		{
 			parser = new CatalogParser();
 			writer = new CatalogEntityWriter();
 		}
-		private static string elementName = "Library";
-		private CatalogParser parser;
-		private CatalogEntityWriter writer;
+
+		/// <summary>
+		/// Reads from.
+		/// </summary>
+		/// <param name="input">The input.</param>
+		/// <returns></returns>
+		/// <exception cref="UnknownElementException">Founded unknown element tag: {node.Name.LocalName}</exception>
 		public IEnumerable<IEntity> ReadFrom(TextReader input)
 		{
 			using (XmlReader xmlReader = XmlReader.Create(input, new XmlReaderSettings
@@ -54,6 +65,12 @@ namespace XmlBasic
 			}
 		}
 
+		/// <summary>
+		/// Converts to .
+		/// </summary>
+		/// <param name="output">The output.</param>
+		/// <param name="catalogs">The catalogs.</param>
+		/// <exception cref="EntityWriterNotFoundedException">Cannot find entity writer for type {catalogEntity.GetType().FullName}</exception>
 		public void WriteTo(TextWriter output, IEnumerable<IEntity> catalogs)
 		{
 			using (XmlWriter xmlWriter = XmlWriter.Create(output, new XmlWriterSettings()))

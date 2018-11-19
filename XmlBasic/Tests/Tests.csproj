@@ -51,7 +51,8 @@
   <ItemGroup>
     <Compile Include="Comparers\BookComparer.cs" />
     <Compile Include="Comparers\NewspaperComparer.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Comparers\PatentComparer.cs" />
+    <Compile Include="LibraryLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
