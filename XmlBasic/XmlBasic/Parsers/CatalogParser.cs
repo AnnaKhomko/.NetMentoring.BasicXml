@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
@@ -10,6 +6,9 @@ using XmlBasic.Exceptions;
 
 namespace XmlBasic.Parsers
 {
+	/// <summary>
+	/// Catalog entity parser class
+	/// </summary>
 	public class CatalogParser
 	{
 		private BookEntityParser bookParser;
@@ -23,16 +22,32 @@ namespace XmlBasic.Parsers
 			patentParser = new PatentEntityParser();
 		}
 
+		/// <summary>
+		/// Parses the element.
+		/// </summary>
+		/// <param name="element">The element.</param>
+		/// <returns>IEntity object</returns>
+		/// <exception cref="XmlBasic.Exceptions.UnknownElementException">Founded unknown element tag: {elem.Name.LocalName}</exception>
 		public IEntity ParseElement(XElement element)
 		{
+			if (element == null)
+			{
+				throw new ArgumentNullException($"{nameof(element)} is null.");
+			}
+
 			var catalogEntity = new Catalog
 			{
 				UploadingTime = DateTime.Parse(element.Attribute("unloadingTime").Value),
 				LibraryName = element.Attribute("libraryName").Value				
-		};
+			};
 			foreach (var node in element.Nodes())
 			{
 				var elem = XElement.Parse(node.ToString());
+
+				if (elem == null)
+				{
+					throw new ArgumentNullException($"{nameof(elem)} is null.");
+				}
 
 				switch (elem.Name.LocalName)
 				{

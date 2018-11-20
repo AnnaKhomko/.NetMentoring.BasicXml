@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comparers\BookComparer.cs" />
+    <Compile Include="Comparers\CatalogComparer.cs" />
     <Compile Include="Comparers\NewspaperComparer.cs" />
     <Compile Include="Comparers\PatentComparer.cs" />
     <Compile Include="LibraryLoaderTests.cs" />

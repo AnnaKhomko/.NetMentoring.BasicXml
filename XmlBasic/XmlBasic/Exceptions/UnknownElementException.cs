@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XmlBasic.Exceptions
 {
+	/// <summary>
+	/// Unknown Element Exception class
+	/// </summary>
+	/// <seealso cref="System.Exception" />
 	public class UnknownElementException : Exception
 	{
 		public UnknownElementException() : base()

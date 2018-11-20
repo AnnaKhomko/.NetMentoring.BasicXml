@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
@@ -11,10 +7,20 @@ using XmlBasic.Writers.Abstract;
 
 namespace XmlBasic.Writers
 {
+	/// <summary>
+	/// Book entity writer class
+	/// </summary>
+	/// <seealso cref="XmlBasic.Writers.Abstract.BaseWriter" />
 	public class BookEntityWriter : BaseWriter
 	{
 		private static string elementName = "Book";
 
+		/// <summary>
+		/// Writes the entity.
+		/// </summary>
+		/// <param name="element">The element.</param>
+		/// <param name="entity">The entity.</param>
+		/// <exception cref="ArgumentException">provided {nameof(entity)} is null or not of type {nameof(Book)}</exception>
 		public void WriteEntity(XElement element, IEntity entity)
 		{
 			Book book = entity as Book;

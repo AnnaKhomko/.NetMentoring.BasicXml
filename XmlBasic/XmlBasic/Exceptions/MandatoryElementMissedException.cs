@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace XmlBasic.Exceptions
 {
+	/// <summary>
+	/// Mandatory Element Missed Exception class
+	/// </summary>
+	/// <seealso cref="System.Exception" />
 	public class MandatoryElementMissedException : Exception
 	{
 		public MandatoryElementMissedException() : base()

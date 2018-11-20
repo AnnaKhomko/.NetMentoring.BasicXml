@@ -5,12 +5,23 @@ using XmlBasic.Entities;
 namespace Tests.Comparers
 {
 	/// <summary>
-	/// Class to compare Book entities
+	/// Class to compare Catalog Entities
 	/// </summary>
 	/// <seealso cref="System.Collections.IComparer" />
-	/// <seealso cref="System.Collections.Generic.IComparer{XmlBasic.Entities.Book}" />
-	public class BookComparer : IComparer, IComparer<Book>
-    {
+	/// <seealso cref="System.Collections.Generic.IComparer{XmlBasic.Entities.Catalog}" />
+	public class CatalogComparer : IComparer, IComparer<Catalog>
+	{
+		private BookComparer bookComparer;
+		private NewspaperComparer newspaperComparer;
+		private PatentComparer patentComparer;
+
+		public CatalogComparer()
+		{
+			bookComparer = new BookComparer();
+			newspaperComparer = new NewspaperComparer();
+			patentComparer = new PatentComparer();
+		}
+
 		/// <summary>
 		/// Compares two objects and returns a value indicating whether one is equal to the other.
 		/// </summary>
@@ -21,15 +32,13 @@ namespace Tests.Comparers
 		/// <paramref name="x" /> equals <paramref name="y" />. Zero
 		/// <paramref name="x" /> doesn't equal <paramref name="y" />. One
 		/// </returns>
-		public int Compare(Book x, Book y)
+		public int Compare(Catalog x, Catalog y)
 		{
-			return x.Name == y.Name
-				   && x.ISBN == y.ISBN
-				   && x.Annotation == y.Annotation
-				   && x.PageCount == y.PageCount
-				   && x.PublicationYear == y.PublicationYear
-				   && x.PublicationPlace == y.PublicationPlace
-				   && x.PublisherName == y.PublisherName ? 0 : 1;
+			return x.UploadingTime == y.UploadingTime
+				   && x.LibraryName == y.LibraryName
+				   && bookComparer.Compare(x.Book, y.Book).Equals(0)
+				   && newspaperComparer.Compare(x.Newspaper, y.Newspaper).Equals(0)
+				   && patentComparer.Compare(x.Patent, y.Patent).Equals(0) ? 0 : 1;
 		}
 
 		/// <summary>
@@ -44,7 +53,7 @@ namespace Tests.Comparers
 		/// </returns>
 		public int Compare(object x, object y)
 		{
-			return Compare(x as Book, y as Book);
+			return Compare(x as Catalog, y as Catalog);
 		}
 	}
 }

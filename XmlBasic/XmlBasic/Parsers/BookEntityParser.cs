@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
 using XmlBasic.Entities.Interfaces;
@@ -11,13 +7,23 @@ using XmlBasic.Parsers.Abstract;
 
 namespace XmlBasic.Parsers
 {
+	/// <summary>
+	/// Book Entity Parser class
+	/// </summary>
+	/// <seealso cref="XmlBasic.Parsers.Abstract.BaseParser" />
 	public class BookEntityParser : BaseParser
 	{
+		/// <summary>
+		/// Parses the element.
+		/// </summary>
+		/// <param name="element">The element.</param>
+		/// <returns>IEntity object</returns>
+		/// <exception cref="ArgumentNullException"></exception>
 		public IEntity ParseElement(XElement element)
 		{
 			if (element == null)
 			{
-				throw new ArgumentNullException($"{nameof(element)} is null");
+				throw new ArgumentNullException($"{nameof(element)} is null.");
 			}
 
 			var bookEntity = new Book

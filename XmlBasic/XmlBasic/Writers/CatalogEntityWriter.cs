@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using XmlBasic.Entities;
@@ -11,6 +7,10 @@ using XmlBasic.Writers.Abstract;
 
 namespace XmlBasic.Writers
 {
+	/// <summary>
+	/// Catalog entity writer class
+	/// </summary>
+	/// <seealso cref="XmlBasic.Writers.Abstract.BaseWriter" />
 	public class CatalogEntityWriter : BaseWriter
 	{
 		private BookEntityWriter bookWriter;
@@ -26,6 +26,12 @@ namespace XmlBasic.Writers
 			patentWriter = new PatentEntityWriter();
 		}
 
+		/// <summary>
+		/// Writes the entity.
+		/// </summary>
+		/// <param name="xmlWriter">The XML writer.</param>
+		/// <param name="entity">The entity.</param>
+		/// <exception cref="ArgumentException">provided {nameof(entity)} is null or not of type {nameof(Catalog)}</exception>
 		public void WriteEntity(XmlWriter xmlWriter, IEntity entity)
 		{
 			Catalog catalog = entity as Catalog;
